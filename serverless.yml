@@ -74,6 +74,20 @@ functions:
             parameters:
               paths:
                 id: true
+  delete-user:
+    handler: src/functions/deleteUser/handler.delete_user
+    runtime: python3.8
+    package:
+      patterns:
+        - "src/functions/deleteUser/handler.py"
+    events:
+      - http:
+          path: users/{id}
+          method: DELETE
+          request:
+            parameters:
+              paths:
+                id: true
 resources:
   Resources:
     usersTable:
